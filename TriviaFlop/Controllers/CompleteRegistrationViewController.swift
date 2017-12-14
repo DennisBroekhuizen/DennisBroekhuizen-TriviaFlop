@@ -32,26 +32,39 @@ class CompleteRegistrationViewController: UIViewController {
         // Dismiss keyboard when the button is tapped.
         self.view.endEditing(true)
         
+        // Check if displayname field is filled in.
         guard let displayName = displayNameTextField.text, !displayName.isEmpty else { return }
+        
+        // Retrieve all usernames from database.
         refUsernames.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Insert user tot database if the username doesn't exsist.
             if snapshot.hasChild(displayName.lowercased()) == false {
-                self.refUsernames.child(displayName.lowercased()).setValue(displayName)
-                let user = Auth.auth().currentUser
-                if let user = user {
-                    let changeRequest = user.createProfileChangeRequest()
-                    changeRequest.displayName = displayName
-                    changeRequest.commitChanges { error in
-                        if let error = error {
-                            self.errorLabel.text = error as? String
-                        } else {
-                            self.presentLoggedInScreen()
-                        }
-                    }
-                }
+                self.insertUsernameToDatabase(username: displayName)
             } else {
                 self.errorLabel.text = "Sorry, this username already exists."
             }
         })
+    }
+    
+    // Inserts user to database.
+    func insertUsernameToDatabase(username: String) {
+        // Insert username to usernames table.
+        self.refUsernames.child(username.lowercased()).setValue(username)
+        
+        // Set currentUser displayName to username.
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.displayName = username
+            changeRequest.commitChanges { error in
+                // Go to next screen if everything went right.
+                if let error = error {
+                    self.errorLabel.text = error as? String
+                } else {
+                    self.presentLoggedInScreen()
+                }
+            }
+        }
     }
 
     // Function to send the user to the next screen if they log in successfully.

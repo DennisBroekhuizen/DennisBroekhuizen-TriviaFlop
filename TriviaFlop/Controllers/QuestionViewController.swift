@@ -5,12 +5,13 @@
 //  Created by Dennis Broekhuizen on 10-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
+// Counter by: https://stackoverflow.com/questions/29374553/how-to-make-a-countdown-with-nstimer-on-swift.
 
 import UIKit
 import HTMLString
 import SwiftySound
 
-// UIButton animations by: http://seanallen.co/posts/uibutton-animations
+// UIButton animations by: http://seanallen.co/posts/uibutton-animations.
 extension UIButton {
     
     func pulsate() {
@@ -204,13 +205,13 @@ class QuestionViewController: UIViewController {
         let totalProgress = Float(questionIndex) / Float(questions.count)
         let currentQuestion = questions[questionIndex]
         
-        // Declare answers.
+        // Put correct and incorrect answers in array.
         var answers = [currentQuestion.correctAnswer.removingHTMLEntities,
                        currentQuestion.incorrectAnswers[0].removingHTMLEntities,
                        currentQuestion.incorrectAnswers[1].removingHTMLEntities,
                        currentQuestion.incorrectAnswers[2].removingHTMLEntities]
         
-        // Randomize answers.
+        // Shuffle answers by: https://learnappmaking.com/shuffling-array-swift-explained/.
         var randomAnswers = [String]()
         for _ in 0..<answers.count {
             let rand = Int(arc4random_uniform(UInt32(answers.count)))
@@ -237,7 +238,7 @@ class QuestionViewController: UIViewController {
         Sound.stop(file: "timer.mp3")
         Sound.stop(file: "timeUp.mp3")
 
-        // Set timer to value can't let the timer run again.
+        // Set timer to value that can't let the timer run again.
         counter = -2
     }
     

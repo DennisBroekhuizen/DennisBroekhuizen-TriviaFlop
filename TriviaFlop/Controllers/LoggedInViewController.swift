@@ -15,6 +15,8 @@ class LoggedInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Show username in mainscreen.
         let user = Auth.auth().currentUser
         if let user = user {
             if let displayName = user.displayName {
@@ -25,6 +27,7 @@ class LoggedInViewController: UIViewController {
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
+        // Try to logout.
         do {
             try Auth.auth().signOut()
         } catch {

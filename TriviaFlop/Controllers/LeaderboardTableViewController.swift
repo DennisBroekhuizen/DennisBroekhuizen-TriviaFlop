@@ -20,14 +20,18 @@ class LeaderboardTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Retrieve userscores from database.
         ref.queryOrdered(byChild: "score").observe(.value, with: { snapshot in
+            // Create array for new items in database.
             var newItems: [Userscore] = []
             
             for item in snapshot.children {
+                // Declare and append elements from database to array
                 let userscore = Userscore(snapshot: item as! DataSnapshot)
                 newItems.append(userscore)
             }
             
+            // Set new items to items array
             self.items = newItems
             self.tableView.reloadData()
         })
@@ -38,21 +42,19 @@ class LeaderboardTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return items.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Declare cell and items.
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! LeaderboardTableViewCell
-        
         let leaderboardItem = items.reversed()[indexPath.row]
         
+        // Set leaderboard items to cell elements.
         cell.numberLabel.text = String(indexPath.row+1)
         cell.nameLabel.text = leaderboardItem.username
         cell.scoreLabel.text = String(leaderboardItem.score)

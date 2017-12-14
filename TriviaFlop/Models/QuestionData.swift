@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Structures to store questions from api.
 struct Questions: Codable {
     let question: [Question]
     

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Controller to retrieve questions from trivia api.
 class QuestionDataController {
     func fetchQuestions(completion: @escaping (Questions?) -> Void) {
         let url = URL(string: "https://opentdb.com/api.php?amount=10&category=21&type=multiple")!

@@ -5,6 +5,7 @@
 //  Created by Dennis Broekhuizen on 08-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
+// Login tutorial from https://www.youtube.com/watch?v=_hHohEa0H-Q.
 
 import UIKit
 import FirebaseAuth
