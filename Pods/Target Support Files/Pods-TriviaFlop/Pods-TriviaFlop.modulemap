@@ -1,0 +1,6 @@
+framework module Pods_TriviaFlop {
+  umbrella header "Pods-TriviaFlop-umbrella.h"
+
+  export *
+  module * { export * }
+}
