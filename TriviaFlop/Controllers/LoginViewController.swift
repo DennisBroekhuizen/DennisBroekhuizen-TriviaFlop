@@ -5,12 +5,14 @@
 //  Created by Dennis Broekhuizen on 08-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
-// Login tutorial from https://www.youtube.com/watch?v=_hHohEa0H-Q.
+//  This file handles logging in to the app or creating an account. After logging in or registering successfull the user will be send to the next screen.
+//
+//  Login tutorial from https://www.youtube.com/watch?v=_hHohEa0H-Q.
 
 import UIKit
 import FirebaseAuth
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!

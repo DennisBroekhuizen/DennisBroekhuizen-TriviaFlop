@@ -5,6 +5,15 @@
 //  Created by Dennis Broekhuizen on 10-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
+//  This file shows the totalscore to the user and inserts that score to firebase if it's higher than the users current score. This constraints are added to the firebase rules in the following way:
+//
+//  "leaderboard": {
+//      "$userId": {
+//          "score": {
+//              ".validate": "!data.exists() || data.val() < newData.val()"
+//          }
+//      }
+//  }
 
 import UIKit
 import FirebaseDatabase

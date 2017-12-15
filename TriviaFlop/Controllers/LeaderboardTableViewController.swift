@@ -5,6 +5,7 @@
 //  Created by Dennis Broekhuizen on 12-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
+//  This file handles updating the leaderboard in realtime. Userscores are retrieved from firebase.
 
 import UIKit
 import FirebaseDatabase

@@ -5,6 +5,7 @@
 //  Created by Dennis Broekhuizen on 11-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
+//  This file asks the user for an username so it can be used to show that name in the leaderboard. It also checks if the given username already exists in Firebase. If so the app will print an error to the screen, so the user will choose another username. After that the username will be added to an usernames table in firebase and user displayName will be updated to the given username. In this way the username will be stored twice, but firebase does not have an option to check for unique displayNames, because the currentUser can't retrieve that information from other users.
 
 import UIKit
 import FirebaseAuth

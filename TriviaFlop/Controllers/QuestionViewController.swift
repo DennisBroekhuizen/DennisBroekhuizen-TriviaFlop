@@ -5,7 +5,9 @@
 //  Created by Dennis Broekhuizen on 10-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
-// Quiz timer by: https://stackoverflow.com/questions/29374553/how-to-make-a-countdown-with-nstimer-on-swift.
+//  This file handles the biggest part of the app. Showing questions and answers to the user. Updating the user interface and calculating the score. After the user has completed all the questions, the user will be send to the next results screen.
+//
+//  Quiz timer by: https://stackoverflow.com/questions/29374553/how-to-make-a-countdown-with-nstimer-on-swift.
 
 import UIKit
 import HTMLString
@@ -74,7 +76,7 @@ class QuestionViewController: UIViewController {
     // Variables and constants.
     var questionIndex = 0
     var score = 0
-    var counter = 20
+    var countdownTimer = 20
     var questions: [Question] = []
     let questionDataController = QuestionDataController()
     
@@ -105,26 +107,27 @@ class QuestionViewController: UIViewController {
                     self.updateUI()
                     
                     // Start quiztimer.
-                    var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
+                    var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCountdown), userInfo: nil, repeats: true)
                 }
             }
         }
     }
     
-    @objc func updateCounter() {
+    // Update coundown function used 'strange' numbers because of lag in app.
+    @objc func updateCountdown() {
         // Update timer when there is time left.
-        if counter > -1 {
-            self.rightBarButton.title = String(counter) + "\""
-            counter -= 1
+        if countdownTimer > -1 {
+            self.rightBarButton.title = String(countdownTimer) + "\""
+            countdownTimer -= 1
         }
         
         // Play timer sound when timer has ~10 seconds left.
-        if counter == 9 {
+        if countdownTimer == 9 {
             Sound.play(file: "timer.mp3", numberOfLoops: 10)
         }
         
         // Skip to next question when times up.
-        if counter == -1 {
+        if countdownTimer == -1 {
             self.rightBarButton.title = ""
             Sound.stop(file: "timer.mp3")
             Sound.play(file: "timeUp.mp3")
@@ -195,7 +198,7 @@ class QuestionViewController: UIViewController {
     
     func updateUI() {
         // Set timer counter back to 20 seconds.
-        counter = 20
+        countdownTimer = 20
         
         // Hide correct and wrong label.
         correctLabel.isHidden = true
@@ -239,7 +242,7 @@ class QuestionViewController: UIViewController {
         Sound.stop(file: "timeUp.mp3")
 
         // Set timer to value that can't let the timer run again.
-        counter = -2
+        countdownTimer = -2
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender:

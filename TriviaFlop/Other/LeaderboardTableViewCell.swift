@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Custom TableViewCell
 class LeaderboardTableViewCell: UITableViewCell {
 
     @IBOutlet weak var numberLabel: UILabel!

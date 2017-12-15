@@ -5,6 +5,7 @@
 //  Created by Dennis Broekhuizen on 10-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
+//  This file handles the first screen after the user has logged in. From this screen the user can start a quiz, log out or view the leaderboard.
 
 import UIKit
 import FirebaseAuth

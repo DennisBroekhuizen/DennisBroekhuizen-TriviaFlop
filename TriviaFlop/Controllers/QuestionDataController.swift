@@ -5,6 +5,7 @@
 //  Created by Dennis Broekhuizen on 10-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
+//  This file handles retrieving questions from the given API from opentdb.com. Data will be converted to created structs in QuestionData file.
 
 import Foundation
 
