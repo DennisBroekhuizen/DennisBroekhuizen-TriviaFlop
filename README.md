@@ -1,5 +1,7 @@
 # Dennis Broekhuizen TriviaFlop
 
+[![BCH compliance](https://bettercodehub.com/edge/badge/DennisBroekhuizen/DennisBroekhuizen-TriviaFlop?branch=master)](https://bettercodehub.com/)
+
 Created my own iOS quiz app in Swift. App submitted for Minor Programmeren University of Amsterdam.
 
 ![Alt Text](https://raw.githubusercontent.com/DennisBroekhuizen/DennisBroekhuizen-TriviaFlop/master/Images/1-Home.png)
