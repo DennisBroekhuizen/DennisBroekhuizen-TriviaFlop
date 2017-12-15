@@ -5,7 +5,7 @@
 //  Created by Dennis Broekhuizen on 10-12-17.
 //  Copyright © 2017 Dennis Broekhuizen. All rights reserved.
 //
-// Counter by: https://stackoverflow.com/questions/29374553/how-to-make-a-countdown-with-nstimer-on-swift.
+// Quiz timer by: https://stackoverflow.com/questions/29374553/how-to-make-a-countdown-with-nstimer-on-swift.
 
 import UIKit
 import HTMLString
@@ -112,7 +112,7 @@ class QuestionViewController: UIViewController {
     }
     
     @objc func updateCounter() {
-        // Update times when there is time left.
+        // Update timer when there is time left.
         if counter > -1 {
             self.rightBarButton.title = String(counter) + "\""
             counter -= 1
@@ -123,7 +123,7 @@ class QuestionViewController: UIViewController {
             Sound.play(file: "timer.mp3", numberOfLoops: 10)
         }
         
-        // skip to next question when times up.
+        // Skip to next question when times up.
         if counter == -1 {
             self.rightBarButton.title = ""
             Sound.stop(file: "timer.mp3")
@@ -133,7 +133,7 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
-        // Disable buttons untill next question is loaded, so user can't switch answers.
+        // Disable buttons until next question is loaded, so user can't switch answers.
         singleButton1.isEnabled = false
         singleButton2.isEnabled = false
         singleButton3.isEnabled = false
